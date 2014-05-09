@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="ae96dafc927e43349ba8d1cb26f36635" Name="Diagram1">
+        <EntityTypeShape EntityType="IceSubsModel.Comment" Width="1.5" PointX="3" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="IceSubsModel.Genre" Width="1.5" PointX="3.75" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="IceSubsModel.IceUser" Width="1.5" PointX="0.75" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="IceSubsModel.Language" Width="1.5" PointX="6" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="IceSubsModel.Medium" Width="1.5" PointX="6" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="IceSubsModel.Rating" Width="1.5" PointX="6" PointY="10.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="IceSubsModel.RequestTranslation" Width="1.5" PointX="8.25" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="IceSubsModel.SuggestMedia" Width="1.5" PointX="10.5" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="IceSubsModel.Translation" Width="1.5" PointX="8.25" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="IceSubsModel.TranslationLine" Width="1.5" PointX="10.5" PointY="1.125" IsExpanded="true" />
+        <AssociationConnector Association="IceSubsModel.FK_Comments_IceUser" ManuallyRouted="false" />
+        <AssociationConnector Association="IceSubsModel.FK_Comments_Translation" ManuallyRouted="false" />
+        <AssociationConnector Association="IceSubsModel.FK_Media_IceUser" ManuallyRouted="false" />
+        <AssociationConnector Association="IceSubsModel.FK_SuggestMedia_IceUser" ManuallyRouted="false" />
+        <AssociationConnector Association="IceSubsModel.FK_Translation_IceUser" ManuallyRouted="false" />
+        <AssociationConnector Association="IceSubsModel.FK_TranslationLines_IceUser" ManuallyRouted="false" />
+        <AssociationConnector Association="IceSubsModel.FK_Media_Language" ManuallyRouted="false" />
+        <AssociationConnector Association="IceSubsModel.FK_Translation_Language" ManuallyRouted="false" />
+        <AssociationConnector Association="IceSubsModel.FK_Media_Translation" ManuallyRouted="false" />
+        <AssociationConnector Association="IceSubsModel.FK_RequestTranslation_Media" ManuallyRouted="false" />
+        <AssociationConnector Association="IceSubsModel.FK_Translation_Media" ManuallyRouted="false" />
+        <AssociationConnector Association="IceSubsModel.FK_Translation_Ratings" ManuallyRouted="false" />
+        <AssociationConnector Association="IceSubsModel.FK_SuggestMedia_RequestTranslation" ManuallyRouted="false" />
+        <AssociationConnector Association="IceSubsModel.FK_TranslationLines_Translation" ManuallyRouted="false" />
+        <AssociationConnector Association="IceSubsModel.GenreMedia" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

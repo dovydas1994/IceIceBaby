@@ -1,0 +1,98 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <title>i c e s u b s</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="~/Content/main.css" />
+    <link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css' />
+
+</head>
+
+<body>
+
+    <div id="top_header">
+        <div class="container">
+            <div class="header_col">
+                <a href="/Home"><img src="~/gfx/icesubs-dark2.png" id="logo" alt="logo" /></a>
+            </div>
+            @using (Html.BeginForm("Browse", "SearchEngine", FormMethod.Post))
+            {
+                <div class="header_col">
+                    @Html.TextBox("searchBar")
+
+                    <button type="submit" class="btn btn-primary">Search</button>
+
+                    <!--
+                    Title:  <br />
+                     <textarea class="form-control" rows="1" id="searchBar" name="searchBar"></textarea>
+                     <input type="submit" value="Search" id="searchBar" name="searchBar"/>
+
+
+                    <input type="text" placeholder="Please enter your search" class="search" id="searchBar" name="searchBar" />
+                 <a href="/SearchEngine/Browse"><input type="button" value="search" class="button" id="searchBtn" /></a>
+            -->
+                </div>
+            }
+            <!--<form action="/SearchEngine/Browse" method="get">
+                <div class="header_col">
+                    <input type="text" placeholder="Please enter your search" class="search" id="searchBtn" name="searchBtn" />
+                    <a href="SearchEngine/Browse"><input type="submit" value="search" class="button" /></a>
+                </div>
+            </form>-->
+
+            <div class="header_col">
+                <input type="button" value="Log in" class="button" id="LogInBtn" />
+                <input type="button" value="Sign up" class="button" />
+            </div>
+        </div>
+    </div>
+
+    <div id="menu_header">
+        <div class="container">
+            <div id="menubar">
+                <ul>
+                    <li>@Html.ActionLink("Newest", "Newest", "Media")</li>
+                    <li>@Html.ActionLink("Popular", "Popular", "Media")</li>
+                    <li>@Html.ActionLink("All", "All", "Media")</li>
+                    <li>@Html.ActionLink("Movies", "Movies", "Media")</li>
+                    <li>@Html.ActionLink("TV series", "TvSeries", "Media")</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="menu_header">
+        <div class="container">
+            @RenderSection("CustomHeader", required: false)
+        </div>
+    </div>
+
+
+    <div class="container">
+        @RenderBody()
+    </div>
+
+    <div id="footer">
+        <div class="container">
+            <ul>
+                <li>IceSubs ehf</li>
+                <li>Copyright &copy;</li>
+                <li>666 Reykjavik</li>
+                <li><a href="mailto:help@icesubs.is">Feedback</a></li>
+                <li>Phone: 555 1234</li>
+            </ul>
+        </div>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+    <script src="~/Scripts/scripts.js"></script>
+
+</body>
+</html>
+
+

@@ -1,0 +1,175 @@
+﻿@model IceSubs.Controllers.FrontPageViewModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section CustomHeader{
+    <h1>Popular</h1>
+    <table class="one">
+        <tr>
+            @foreach (var item in Model.MostPopular)
+            {
+                <td> <a href="#"> <img src="~/movies/1.jpg" alt="Failed to load image" class="MovieImage" /> @item.Title</a> </td>
+            }
+            <!--
+            <td> <a href="#"> <img src="~/movies/1.jpg" alt="Failed to load image" class="MovieImage" /> </a> </td>
+            <td> <a href="#"> <img src="~/movies/2.jpg" alt="Failed to load image" class="MovieImage" /> </a> </td>
+            <td> <a href="#"> <img src="~/movies/3.jpg" alt="Failed to load image" class="MovieImage" /> </a> </td>
+            <td> <a href="#"> <img src="~/movies/4.jpg" alt="Failed to load image" class="MovieImage" /> </a> </td>
+            <td> <a href="#"> <img src="~/movies/5.jpg" alt="Failed to load image" class="MovieImage" /> </a> </td>
+            <td> <a href="#"> <img src="~/movies/6.jpg" alt="Failed to load image" class="MovieImage" /> </a> </td>
+            <td> <a href="#"> <img src="~/movies/7.jpg" alt="Failed to load image" class="MovieImage" /> </a> </td>
+            <td> <a href="#"> <img src="~/movies/8.jpg" alt="Failed to load image" class="MovieImage" /> </a> </td>
+            <td> <a href="#"> <img src="~/movies/9.jpg" alt="Failed to load image" class="MovieImage" /> </a> </td>
+       -->
+        </tr>
+    </table>
+}
+
+<div class="flank">
+    <h1 id="series">New series</h1>
+    <table>
+        <tr>
+            <td><a href="#">Cosmos</a></td>
+            <td><img src="~/gfx/icon_dl.png" alt="Download"></td>
+        <tr>
+        <tr>
+            <td><a href="#">Game of Thrones</a></td>
+            <td><img src="~/gfx/icon_dl.png" alt="Download"></td>
+        <tr>
+        <tr>
+            <td><a href="#">Breaking Bad</a></td>
+            <td><img src="~/gfx/icon_dl.png" alt="Download"></td>
+        <tr>
+        <tr>
+            <td><a href="#">Fargo</a></td>
+            <td><img src="~/gfx/icon_dl.png" alt="Download"></td>
+        <tr>
+        <tr>
+            <td><a href="#">Almost Human</a></td>
+            <td><img src="~/gfx/icon_dl.png" alt="Download"></td>
+        <tr>
+        <tr>
+            <td><a href="#">Fargo</a></td>
+            <td><img src="~/gfx/icon_dl.png" alt="Download"></td>
+        <tr>
+    </table>
+</div>
+<div class="middle">
+    <h1 id="suggestions">Suggestions</h1>
+    <table>
+        <tr>
+            <td><a href="#">Pulp fiction</a></td>
+            <td>Upvote</td>
+        <tr>
+        <tr>
+            <td><a href="#">Contraband</a></td>
+            <td>Upvote</td>
+        <tr>
+        <tr>
+            <td><a href="#">The Dark Knight</a></td>
+            <td>Upvote</td>
+        <tr>
+        <tr>
+            <td><a href="#">The Dark Knight raises</a></td>
+            <td>Upvote</td>
+        <tr>
+        <tr>
+            <td><a href="#">Schindler's List</a></td>
+            <td>Upvote</td>
+        <tr>
+        <tr>
+            <td><a href="#">12 Angry Men</a></td>
+            <td>Upvote</td>
+        <tr>
+
+    </table>
+</div>
+
+<div class="flank">
+    <h1 id="popular">New movies</h1>
+    <table>
+        <tr>
+            <td><a href="#">Cosmos</a></td>
+            <td><img src="~/gfx/icon_dl.png" alt="Download"></td>
+        <tr>
+        <tr>
+            <td><a href="#">Game of Thrones</a></td>
+            <td><img src="~/gfx/icon_dl.png" alt="Download"></td>
+        <tr>
+        <tr>
+            <td><a href="#">Breaking Bad</a></td>
+            <td><img src="~/gfx/icon_dl.png" alt="Download"></td>
+        <tr>
+        <tr>
+            <td><a href="#">Fargo</a></td>
+            <td><img src="~/gfx/icon_dl.png" alt="Download"></td>
+        <tr>
+        <tr>
+            <td><a href="#">Almost Human</a></td>
+            <td><img src="~/gfx/icon_dl.png" alt="Download"></td>
+        <tr>
+        <tr>
+            <td><a href="#">Fargo</a></td>
+            <td><img src="~/gfx/icon_dl.png" alt="Download"></td>
+        <tr>
+    </table>
+</div>
+<div class="col_left">
+    <img src="~/gfx/ted.png" class="MovieImage">
+</div>
+
+<div class="col_left">
+    <h1 id="series">Highest rated</h1>
+    <table>
+        <tr>
+            <td>1</td>
+            <td><a href="#">Pulp fiction</a></td>
+            <td><img src="~/gfx/stars.png" alt="Download"></td>
+        <tr>
+        <tr>
+            <td>2</td>
+            <td><a href="#">Contraband</a></td>
+            <td><img src="~/gfx/stars.png" alt="Download"></td>
+        <tr>
+        <tr>
+            <td>3</td>
+            <td><a href="#">The Dark Knight</a></td>
+            <td><img src="~/gfx/stars.png" alt="Download"></td>
+        <tr>
+        <tr>
+            <td>4</td>
+            <td><a href="#">The Dark Knight raises</a></td>
+            <td><img src="~/gfx/stars.png" alt="Download"></td>
+        <tr>
+        <tr>
+            <td>5</td>
+            <td><a href="#">Schindler's List</a></td>
+            <td><img src="~/gfx/stars.png" alt="Download"></td>
+        <tr>
+        <tr>
+            <td>6</td>
+            <td><a href="#">12 Angry Men</a></td>
+            <td><img src="~/gfx/stars.png" alt="Download"></td>
+        <tr>
+        <tr>
+            <td>7</td>
+            <td><a href="#">12 Angry Men</a></td>
+            <td><img src="~/gfx/stars.png" alt="Download"></td>
+        <tr>
+        <tr>
+            <td>8</td>
+            <td><a href="#">12 Angry Men</a></td>
+            <td><img src="~/gfx/stars.png" alt="Download"></td>
+        <tr>
+        <tr>
+            <td>9</td>
+            <td><a href="#">12 Angry Men</a></td>
+            <td><img src="~/gfx/stars.png" alt="Download"></td>
+        <tr>
+        <tr>
+            <td>10</td>
+            <td><a href="#">The Dark Knight</a></td>
+            <td><img src="~/gfx/stars.png" alt="Download"></td>
+        <tr>
+    </table>
+</div>		

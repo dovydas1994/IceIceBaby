@@ -1,0 +1,382 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="IceSubsModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Comment">
+    <Key>
+      <PropertyRef Name="CommentsID" />
+    </Key>
+    <Property Name="CommentsID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Text" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Like" Type="Int32" />
+    <Property Name="IceUserID" Type="Int32" Nullable="false" />
+    <Property Name="TranslationID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="IceUser" Relationship="Self.FK_Comments_IceUser" FromRole="Comments" ToRole="IceUser" />
+    <NavigationProperty Name="Translation" Relationship="Self.FK_Comments_Translation" FromRole="Comments" ToRole="Translation" />
+  </EntityType>
+  <EntityType Name="Genre">
+    <Key>
+      <PropertyRef Name="GenreID" />
+    </Key>
+    <Property Name="GenreID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Media" Relationship="Self.GenreMedia" FromRole="Genre" ToRole="Media" />
+  </EntityType>
+  <EntityType Name="IceUser">
+    <Key>
+      <PropertyRef Name="IceUserID" />
+    </Key>
+    <Property Name="IceUserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="32" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Achievements" Type="Int32" />
+    <Property Name="Age" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Comments" Relationship="Self.FK_Comments_IceUser" FromRole="IceUser" ToRole="Comments" />
+    <NavigationProperty Name="Media" Relationship="Self.FK_Media_IceUser" FromRole="IceUser" ToRole="Media" />
+    <NavigationProperty Name="SuggestMedias" Relationship="Self.FK_SuggestMedia_IceUser" FromRole="IceUser" ToRole="SuggestMedia" />
+    <NavigationProperty Name="Translations" Relationship="Self.FK_Translation_IceUser" FromRole="IceUser" ToRole="Translation" />
+    <NavigationProperty Name="TranslationLines" Relationship="Self.FK_TranslationLines_IceUser" FromRole="IceUser" ToRole="TranslationLines" />
+  </EntityType>
+  <EntityType Name="Language">
+    <Key>
+      <PropertyRef Name="LanguageID" />
+    </Key>
+    <Property Name="LanguageID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Media" Relationship="Self.FK_Media_Language" FromRole="Language" ToRole="Media" />
+    <NavigationProperty Name="Translations" Relationship="Self.FK_Translation_Language" FromRole="Language" ToRole="Translation" />
+  </EntityType>
+  <EntityType Name="Medium">
+    <Key>
+      <PropertyRef Name="MediaID" />
+    </Key>
+    <Property Name="MediaID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Year" Type="Int32" />
+    <Property Name="Discription" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="URL1" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="URL2" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Picture" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="File" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="MediaType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PGA_RATING" Type="Int32" Nullable="false" />
+    <Property Name="IceUserID" Type="Int32" Nullable="false" />
+    <Property Name="LanguageID" Type="Int32" Nullable="false" />
+    <Property Name="DateAdded" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="TranslationID" Type="Int32" />
+    <NavigationProperty Name="IceUser" Relationship="Self.FK_Media_IceUser" FromRole="Media" ToRole="IceUser" />
+    <NavigationProperty Name="Language" Relationship="Self.FK_Media_Language" FromRole="Media" ToRole="Language" />
+    <NavigationProperty Name="Translation" Relationship="Self.FK_Media_Translation" FromRole="Media" ToRole="Translation" />
+    <NavigationProperty Name="RequestTranslations" Relationship="Self.FK_RequestTranslation_Media" FromRole="Media" ToRole="RequestTranslation" />
+    <NavigationProperty Name="Translations" Relationship="Self.FK_Translation_Media" FromRole="Media" ToRole="Translation" />
+    <NavigationProperty Name="Genres" Relationship="Self.GenreMedia" FromRole="Media" ToRole="Genre" />
+  </EntityType>
+  <EntityType Name="Rating">
+    <Key>
+      <PropertyRef Name="RatingsID" />
+    </Key>
+    <Property Name="RatingsID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Stars" Type="Int32" />
+    <NavigationProperty Name="Translations" Relationship="Self.FK_Translation_Ratings" FromRole="Ratings" ToRole="Translation" />
+  </EntityType>
+  <EntityType Name="RequestTranslation">
+    <Key>
+      <PropertyRef Name="RequestTranslationID" />
+    </Key>
+    <Property Name="RequestTranslationID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UpVotes" Type="Int32" />
+    <Property Name="MediaID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Medium" Relationship="Self.FK_RequestTranslation_Media" FromRole="RequestTranslation" ToRole="Media" />
+    <NavigationProperty Name="SuggestMedias" Relationship="Self.FK_SuggestMedia_RequestTranslation" FromRole="RequestTranslation" ToRole="SuggestMedia" />
+  </EntityType>
+  <EntityType Name="SuggestMedia">
+    <Key>
+      <PropertyRef Name="SuggestMediaID" />
+    </Key>
+    <Property Name="SuggestMediaID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UpVotes" Type="Int32" />
+    <Property Name="Accepted" Type="Boolean" />
+    <Property Name="IceUserID" Type="Int32" Nullable="false" />
+    <Property Name="RequestTranslationID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="IceUser" Relationship="Self.FK_SuggestMedia_IceUser" FromRole="SuggestMedia" ToRole="IceUser" />
+    <NavigationProperty Name="RequestTranslation" Relationship="Self.FK_SuggestMedia_RequestTranslation" FromRole="SuggestMedia" ToRole="RequestTranslation" />
+  </EntityType>
+  <EntityType Name="Translation">
+    <Key>
+      <PropertyRef Name="TranslationID" />
+    </Key>
+    <Property Name="TranslationID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Accepted" Type="Boolean" />
+    <Property Name="IceUserID" Type="Int32" Nullable="false" />
+    <Property Name="MediaID" Type="Int32" Nullable="false" />
+    <Property Name="LanguageID" Type="Int32" Nullable="false" />
+    <Property Name="RatingsID" Type="Int32" />
+    <Property Name="Downloads" Type="Int32" />
+    <NavigationProperty Name="Comments" Relationship="Self.FK_Comments_Translation" FromRole="Translation" ToRole="Comments" />
+    <NavigationProperty Name="IceUser" Relationship="Self.FK_Translation_IceUser" FromRole="Translation" ToRole="IceUser" />
+    <NavigationProperty Name="Language" Relationship="Self.FK_Translation_Language" FromRole="Translation" ToRole="Language" />
+    <NavigationProperty Name="Media" Relationship="Self.FK_Media_Translation" FromRole="Translation" ToRole="Media" />
+    <NavigationProperty Name="Medium" Relationship="Self.FK_Translation_Media" FromRole="Translation" ToRole="Media" />
+    <NavigationProperty Name="Rating" Relationship="Self.FK_Translation_Ratings" FromRole="Translation" ToRole="Ratings" />
+    <NavigationProperty Name="TranslationLines" Relationship="Self.FK_TranslationLines_Translation" FromRole="Translation" ToRole="TranslationLines" />
+  </EntityType>
+  <EntityType Name="TranslationLine">
+    <Key>
+      <PropertyRef Name="TranslationLinesID" />
+    </Key>
+    <Property Name="TranslationLinesID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="StartTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="EndTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Chapter" Type="Int32" Nullable="false" />
+    <Property Name="Text" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="TranslationID" Type="Int32" Nullable="false" />
+    <Property Name="IceUserID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="IceUser" Relationship="Self.FK_TranslationLines_IceUser" FromRole="TranslationLines" ToRole="IceUser" />
+    <NavigationProperty Name="Translation" Relationship="Self.FK_TranslationLines_Translation" FromRole="TranslationLines" ToRole="Translation" />
+  </EntityType>
+  <Association Name="FK_Comments_IceUser">
+    <End Role="IceUser" Type="Self.IceUser" Multiplicity="1" />
+    <End Role="Comments" Type="Self.Comment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="IceUser">
+        <PropertyRef Name="IceUserID" />
+      </Principal>
+      <Dependent Role="Comments">
+        <PropertyRef Name="IceUserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Comments_Translation">
+    <End Role="Translation" Type="Self.Translation" Multiplicity="1" />
+    <End Role="Comments" Type="Self.Comment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Translation">
+        <PropertyRef Name="TranslationID" />
+      </Principal>
+      <Dependent Role="Comments">
+        <PropertyRef Name="TranslationID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Media_IceUser">
+    <End Role="IceUser" Type="Self.IceUser" Multiplicity="1" />
+    <End Role="Media" Type="Self.Medium" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="IceUser">
+        <PropertyRef Name="IceUserID" />
+      </Principal>
+      <Dependent Role="Media">
+        <PropertyRef Name="IceUserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SuggestMedia_IceUser">
+    <End Role="IceUser" Type="Self.IceUser" Multiplicity="1" />
+    <End Role="SuggestMedia" Type="Self.SuggestMedia" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="IceUser">
+        <PropertyRef Name="IceUserID" />
+      </Principal>
+      <Dependent Role="SuggestMedia">
+        <PropertyRef Name="IceUserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Translation_IceUser">
+    <End Role="IceUser" Type="Self.IceUser" Multiplicity="1" />
+    <End Role="Translation" Type="Self.Translation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="IceUser">
+        <PropertyRef Name="IceUserID" />
+      </Principal>
+      <Dependent Role="Translation">
+        <PropertyRef Name="IceUserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TranslationLines_IceUser">
+    <End Role="IceUser" Type="Self.IceUser" Multiplicity="1" />
+    <End Role="TranslationLines" Type="Self.TranslationLine" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="IceUser">
+        <PropertyRef Name="IceUserID" />
+      </Principal>
+      <Dependent Role="TranslationLines">
+        <PropertyRef Name="IceUserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Media_Language">
+    <End Role="Language" Type="Self.Language" Multiplicity="1" />
+    <End Role="Media" Type="Self.Medium" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Language">
+        <PropertyRef Name="LanguageID" />
+      </Principal>
+      <Dependent Role="Media">
+        <PropertyRef Name="LanguageID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Translation_Language">
+    <End Role="Language" Type="Self.Language" Multiplicity="1" />
+    <End Role="Translation" Type="Self.Translation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Language">
+        <PropertyRef Name="LanguageID" />
+      </Principal>
+      <Dependent Role="Translation">
+        <PropertyRef Name="LanguageID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Media_Translation">
+    <End Role="Translation" Type="Self.Translation" Multiplicity="0..1" />
+    <End Role="Media" Type="Self.Medium" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Translation">
+        <PropertyRef Name="TranslationID" />
+      </Principal>
+      <Dependent Role="Media">
+        <PropertyRef Name="TranslationID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RequestTranslation_Media">
+    <End Role="Media" Type="Self.Medium" Multiplicity="1" />
+    <End Role="RequestTranslation" Type="Self.RequestTranslation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Media">
+        <PropertyRef Name="MediaID" />
+      </Principal>
+      <Dependent Role="RequestTranslation">
+        <PropertyRef Name="MediaID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Translation_Media">
+    <End Role="Media" Type="Self.Medium" Multiplicity="1" />
+    <End Role="Translation" Type="Self.Translation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Media">
+        <PropertyRef Name="MediaID" />
+      </Principal>
+      <Dependent Role="Translation">
+        <PropertyRef Name="MediaID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Translation_Ratings">
+    <End Role="Ratings" Type="Self.Rating" Multiplicity="0..1" />
+    <End Role="Translation" Type="Self.Translation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ratings">
+        <PropertyRef Name="RatingsID" />
+      </Principal>
+      <Dependent Role="Translation">
+        <PropertyRef Name="RatingsID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SuggestMedia_RequestTranslation">
+    <End Role="RequestTranslation" Type="Self.RequestTranslation" Multiplicity="1" />
+    <End Role="SuggestMedia" Type="Self.SuggestMedia" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RequestTranslation">
+        <PropertyRef Name="RequestTranslationID" />
+      </Principal>
+      <Dependent Role="SuggestMedia">
+        <PropertyRef Name="RequestTranslationID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TranslationLines_Translation">
+    <End Role="Translation" Type="Self.Translation" Multiplicity="1" />
+    <End Role="TranslationLines" Type="Self.TranslationLine" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Translation">
+        <PropertyRef Name="TranslationID" />
+      </Principal>
+      <Dependent Role="TranslationLines">
+        <PropertyRef Name="TranslationID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="GenreMedia">
+    <End Role="Genre" Type="Self.Genre" Multiplicity="*" />
+    <End Role="Media" Type="Self.Medium" Multiplicity="*" />
+  </Association>
+  <EntityContainer Name="IceSubsContext1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Comments" EntityType="Self.Comment" />
+    <EntitySet Name="Genres" EntityType="Self.Genre" />
+    <EntitySet Name="IceUsers" EntityType="Self.IceUser" />
+    <EntitySet Name="Languages" EntityType="Self.Language" />
+    <EntitySet Name="Media" EntityType="Self.Medium" />
+    <EntitySet Name="Ratings" EntityType="Self.Rating" />
+    <EntitySet Name="RequestTranslations" EntityType="Self.RequestTranslation" />
+    <EntitySet Name="SuggestMedias" EntityType="Self.SuggestMedia" />
+    <EntitySet Name="Translations" EntityType="Self.Translation" />
+    <EntitySet Name="TranslationLines" EntityType="Self.TranslationLine" />
+    <AssociationSet Name="FK_Comments_IceUser" Association="Self.FK_Comments_IceUser">
+      <End Role="IceUser" EntitySet="IceUsers" />
+      <End Role="Comments" EntitySet="Comments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Comments_Translation" Association="Self.FK_Comments_Translation">
+      <End Role="Translation" EntitySet="Translations" />
+      <End Role="Comments" EntitySet="Comments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Media_IceUser" Association="Self.FK_Media_IceUser">
+      <End Role="IceUser" EntitySet="IceUsers" />
+      <End Role="Media" EntitySet="Media" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SuggestMedia_IceUser" Association="Self.FK_SuggestMedia_IceUser">
+      <End Role="IceUser" EntitySet="IceUsers" />
+      <End Role="SuggestMedia" EntitySet="SuggestMedias" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Translation_IceUser" Association="Self.FK_Translation_IceUser">
+      <End Role="IceUser" EntitySet="IceUsers" />
+      <End Role="Translation" EntitySet="Translations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TranslationLines_IceUser" Association="Self.FK_TranslationLines_IceUser">
+      <End Role="IceUser" EntitySet="IceUsers" />
+      <End Role="TranslationLines" EntitySet="TranslationLines" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Media_Language" Association="Self.FK_Media_Language">
+      <End Role="Language" EntitySet="Languages" />
+      <End Role="Media" EntitySet="Media" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Translation_Language" Association="Self.FK_Translation_Language">
+      <End Role="Language" EntitySet="Languages" />
+      <End Role="Translation" EntitySet="Translations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Media_Translation" Association="Self.FK_Media_Translation">
+      <End Role="Translation" EntitySet="Translations" />
+      <End Role="Media" EntitySet="Media" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RequestTranslation_Media" Association="Self.FK_RequestTranslation_Media">
+      <End Role="Media" EntitySet="Media" />
+      <End Role="RequestTranslation" EntitySet="RequestTranslations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Translation_Media" Association="Self.FK_Translation_Media">
+      <End Role="Media" EntitySet="Media" />
+      <End Role="Translation" EntitySet="Translations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Translation_Ratings" Association="Self.FK_Translation_Ratings">
+      <End Role="Ratings" EntitySet="Ratings" />
+      <End Role="Translation" EntitySet="Translations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SuggestMedia_RequestTranslation" Association="Self.FK_SuggestMedia_RequestTranslation">
+      <End Role="RequestTranslation" EntitySet="RequestTranslations" />
+      <End Role="SuggestMedia" EntitySet="SuggestMedias" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TranslationLines_Translation" Association="Self.FK_TranslationLines_Translation">
+      <End Role="Translation" EntitySet="Translations" />
+      <End Role="TranslationLines" EntitySet="TranslationLines" />
+    </AssociationSet>
+    <AssociationSet Name="GenreMedia" Association="Self.GenreMedia">
+      <End Role="Genre" EntitySet="Genres" />
+      <End Role="Media" EntitySet="Media" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

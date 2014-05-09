@@ -1,0 +1,128 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="IceSubsModelStoreContainer" CdmEntityContainer="IceSubsContext1">
+    <EntitySetMapping Name="Comments">
+      <EntityTypeMapping TypeName="IceSubsModel.Comment">
+        <MappingFragment StoreEntitySet="Comments">
+          <ScalarProperty Name="CommentsID" ColumnName="CommentsID" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="Text" ColumnName="Text" />
+          <ScalarProperty Name="Like" ColumnName="Like" />
+          <ScalarProperty Name="IceUserID" ColumnName="IceUserID" />
+          <ScalarProperty Name="TranslationID" ColumnName="TranslationID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Genres">
+      <EntityTypeMapping TypeName="IceSubsModel.Genre">
+        <MappingFragment StoreEntitySet="Genre">
+          <ScalarProperty Name="GenreID" ColumnName="GenreID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="IceUsers">
+      <EntityTypeMapping TypeName="IceSubsModel.IceUser">
+        <MappingFragment StoreEntitySet="IceUser">
+          <ScalarProperty Name="IceUserID" ColumnName="IceUserID" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Achievements" ColumnName="Achievements" />
+          <ScalarProperty Name="Age" ColumnName="Age" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Languages">
+      <EntityTypeMapping TypeName="IceSubsModel.Language">
+        <MappingFragment StoreEntitySet="Language">
+          <ScalarProperty Name="LanguageID" ColumnName="LanguageID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Media">
+      <EntityTypeMapping TypeName="IceSubsModel.Medium">
+        <MappingFragment StoreEntitySet="Media">
+          <ScalarProperty Name="MediaID" ColumnName="MediaID" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Year" ColumnName="Year" />
+          <ScalarProperty Name="Discription" ColumnName="Discription" />
+          <ScalarProperty Name="URL1" ColumnName="URL1" />
+          <ScalarProperty Name="URL2" ColumnName="URL2" />
+          <ScalarProperty Name="Picture" ColumnName="Picture" />
+          <ScalarProperty Name="File" ColumnName="File" />
+          <ScalarProperty Name="MediaType" ColumnName="MediaType" />
+          <ScalarProperty Name="PGA_RATING" ColumnName="PGA RATING" />
+          <ScalarProperty Name="IceUserID" ColumnName="IceUserID" />
+          <ScalarProperty Name="LanguageID" ColumnName="LanguageID" />
+          <ScalarProperty Name="DateAdded" ColumnName="DateAdded" />
+          <ScalarProperty Name="TranslationID" ColumnName="TranslationID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Ratings">
+      <EntityTypeMapping TypeName="IceSubsModel.Rating">
+        <MappingFragment StoreEntitySet="Ratings">
+          <ScalarProperty Name="RatingsID" ColumnName="RatingsID" />
+          <ScalarProperty Name="Stars" ColumnName="Stars" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RequestTranslations">
+      <EntityTypeMapping TypeName="IceSubsModel.RequestTranslation">
+        <MappingFragment StoreEntitySet="RequestTranslation">
+          <ScalarProperty Name="RequestTranslationID" ColumnName="RequestTranslationID" />
+          <ScalarProperty Name="UpVotes" ColumnName="UpVotes" />
+          <ScalarProperty Name="MediaID" ColumnName="MediaID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SuggestMedias">
+      <EntityTypeMapping TypeName="IceSubsModel.SuggestMedia">
+        <MappingFragment StoreEntitySet="SuggestMedia">
+          <ScalarProperty Name="SuggestMediaID" ColumnName="SuggestMediaID" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="UpVotes" ColumnName="UpVotes" />
+          <ScalarProperty Name="Accepted" ColumnName="Accepted" />
+          <ScalarProperty Name="IceUserID" ColumnName="IceUserID" />
+          <ScalarProperty Name="RequestTranslationID" ColumnName="RequestTranslationID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Translations">
+      <EntityTypeMapping TypeName="IceSubsModel.Translation">
+        <MappingFragment StoreEntitySet="Translation">
+          <ScalarProperty Name="TranslationID" ColumnName="TranslationID" />
+          <ScalarProperty Name="Accepted" ColumnName="Accepted" />
+          <ScalarProperty Name="IceUserID" ColumnName="IceUserID" />
+          <ScalarProperty Name="MediaID" ColumnName="MediaID" />
+          <ScalarProperty Name="LanguageID" ColumnName="LanguageID" />
+          <ScalarProperty Name="RatingsID" ColumnName="RatingsID" />
+          <ScalarProperty Name="Downloads" ColumnName="Downloads" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TranslationLines">
+      <EntityTypeMapping TypeName="IceSubsModel.TranslationLine">
+        <MappingFragment StoreEntitySet="TranslationLines">
+          <ScalarProperty Name="TranslationLinesID" ColumnName="TranslationLinesID" />
+          <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+          <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+          <ScalarProperty Name="Chapter" ColumnName="Chapter" />
+          <ScalarProperty Name="Text" ColumnName="Text" />
+          <ScalarProperty Name="TranslationID" ColumnName="TranslationID" />
+          <ScalarProperty Name="IceUserID" ColumnName="IceUserID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="GenreMedia" TypeName="IceSubsModel.GenreMedia" StoreEntitySet="GenreMedia">
+      <EndProperty Name="Genre">
+        <ScalarProperty Name="GenreID" ColumnName="GenreID" />
+      </EndProperty>
+      <EndProperty Name="Media">
+        <ScalarProperty Name="MediaID" ColumnName="MediaID" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>
